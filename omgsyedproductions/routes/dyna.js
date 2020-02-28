@@ -5,7 +5,7 @@ var router = express.Router();
 router.get('/', function(req, res, next) {
 let booklist = [
         {
-            title: 'Tightrope - Americans Reaching for Hope',
+            title: 'Big Wedding Package',
             author: 'Nicholas D. Kristof and Sheryl WuDunn',
             publishedAt: new Date('2020-01-20'),
         },

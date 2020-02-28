@@ -4,6 +4,22 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+const mariadb = require('mariadb/callback');
+
+const db = mariadb.createConnection ({host: 'eagle.cdm.depaul.edu', user: 'saftaabu', password: 'saftaabu', database: 'omgsyedb'});
+
+// connect to database
+db.connect((err) => {
+  if (err) {
+    console.log("not connected due to error: " + err);
+  } else
+	{
+    console.log("connected to db");
+  }
+});
+
+global.db = db;
+
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -11,6 +27,10 @@ var aboutRouter = require('./routes/about');
 var contactRouter = require('./routes/contact');
 var layouts = require('express-ejs-layouts');
 var dynaRouter = require('./routes/dyna');
+var packagesRouter = require('./routes/packages');
+var privacyRouter = require('./routes/privacy');
+var helpRouter = require('./routes/help');
+
 
 var app = express();
 
@@ -24,11 +44,14 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(layouts);
-app.use('/dyna', dynaRouter)
+app.use('/dyna', dynaRouter);
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/about', aboutRouter);
 app.use('/contact', contactRouter);
+app.use('/packages', packagesRouter);
+app.use('/privacy', privacyRouter);
+app.use('/help', helpRouter);
 
 
 

@@ -3,7 +3,19 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Index' });
+  let query = "SELECT product_id, productname, productimage, status, saleprice from product"; 
+
+  // execute query
+  db.query(query, (err, result) => {
+		if (err) {
+			res.redirect('/');
+		}
+	res.render('index', {title: 'omgsyedproductions', products: result });
+ 	});
+});
+
+module.exports = router;
+
 });
 
 module.exports = router;
