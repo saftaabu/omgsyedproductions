@@ -30,6 +30,7 @@ var dynaRouter = require('./routes/dyna');
 var packagesRouter = require('./routes/packages');
 var privacyRouter = require('./routes/privacy');
 var helpRouter = require('./routes/help');
+var productRouter = require('./routes/product');
 
 
 var app = express();
@@ -52,6 +53,7 @@ app.use('/contact', contactRouter);
 app.use('/packages', packagesRouter);
 app.use('/privacy', privacyRouter);
 app.use('/help', helpRouter);
+app.use('/product', productRouter);
 
 
 

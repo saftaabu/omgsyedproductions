@@ -10,12 +10,12 @@ router.get('/', function(req, res, next) {
 		if (err) {
 			res.redirect('/');
 		}
-	res.render('index', {title: 'omgsyedproductions', products: result });
+	res.render('index', {products: result });
  	});
 });
 
 module.exports = router;
 
-});
+
 
 module.exports = router;
