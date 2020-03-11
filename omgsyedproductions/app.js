@@ -7,6 +7,7 @@ var logger = require('morgan');
 const mariadb = require('mariadb/callback');
 const cart = [];
 global.cart = cart;
+const session = require('express-session');
 
 const db = mariadb.createConnection ({host: 'eagle.cdm.depaul.edu', user: 'saftaabu', password: 'saftaabu', database: 'omgsyedb'});
 
@@ -40,6 +41,7 @@ var customerRouter = require('./routes/customer');
 
 
 var app = express();
+app.use(session({secret: 'omgsyedproductions'}));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -62,7 +64,7 @@ app.use('/help', helpRouter);
 app.use('/product', productRouter);
 app.use('/catalog', catalogRouter);
 app.use('/customer', customerRouter);
-
+ 
 
 
 
