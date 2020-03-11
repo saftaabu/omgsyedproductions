@@ -10,3 +10,53 @@ create table customer (
     state           varchar(20),
     zip             varchar(10),
     addlnotes       varchar(10000) );
+    
+    CREATE TABLE supplier (
+	supplier_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	companyname VARCHAR(50) NOT NULL,
+	pointofcontact VARCHAR(50) NOT NULL,
+	website VARCHAR(50) NOT NULL,
+	phone VARCHAR(20) NOT NULL
+	);
+
+CREATE TABLE category (
+	category_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	categoryname VARCHAR(50) NOT NULL,
+	description VARCHAR(250) NOT NULL
+	);
+CREATE TABLE product (
+	product_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	productname VARCHAR(50) NOT NULL,
+	productimage VARCHAR(50) NOT NULL,
+	description VARCHAR(500) NOT NULL,
+	category_id INT NOT NULL,
+	supplier_id INT NOT NULL,
+	subcategory_1 VARCHAR(20) NOT NULL,
+	subcategory_2 VARCHAR(20) NOT NULL,
+	status VARCHAR(10) NOT NULL,
+	saleprice DECIMAL(8,2) NOT NULL,
+	purchaseprice DECIMAL(8,2) NOT NULL,
+	qtyonhand INT NOT NULL,
+	reorderpoint INT NOT NULL,
+	reorderqty INT NOT NULL,
+	FOREIGN KEY (supplier_id) REFERENCES supplier(supplier_id) ON DELETE CASCADE ON UPDATE RESTRICT,
+	FOREIGN KEY (category_id) REFERENCES category(category_id) ON DELETE CASCADE ON UPDATE RESTRICT
+	);
+CREATE TABLE saleorder (
+	order_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	customer_id INT NOT NULL,
+	saledate DATE NOT NULL,
+	salenotes  VARCHAR(500),	
+	FOREIGN KEY (customer_id) REFERENCES customer(customer_id) ON DELETE CASCADE ON UPDATE RESTRICT
+	);
+
+CREATE TABLE orderdetail (
+	orderdetail_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	order_id INT NOT NULL,
+	product_id INT NOT NULL,
+	customization VARCHAR(1000),
+	saleprice DECIMAL(8,2) NOT NULL,
+	prodqty INT NOT NULL,
+	FOREIGN KEY (order_id) REFERENCES saleorder(order_id) ON DELETE CASCADE ON UPDATE RESTRICT,
+	FOREIGN KEY (product_id) REFERENCES product(product_id) ON DELETE CASCADE ON UPDATE RESTRICT
+	);

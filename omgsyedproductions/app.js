@@ -5,6 +5,8 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 const mariadb = require('mariadb/callback');
+const cart = [];
+global.cart = cart;
 
 const db = mariadb.createConnection ({host: 'eagle.cdm.depaul.edu', user: 'saftaabu', password: 'saftaabu', database: 'omgsyedb'});
 
@@ -31,6 +33,10 @@ var packagesRouter = require('./routes/packages');
 var privacyRouter = require('./routes/privacy');
 var helpRouter = require('./routes/help');
 var productRouter = require('./routes/product');
+var catalogRouter = require('./routes/catalog');
+var customerRouter = require('./routes/customer');
+
+
 
 
 var app = express();
@@ -54,6 +60,9 @@ app.use('/packages', packagesRouter);
 app.use('/privacy', privacyRouter);
 app.use('/help', helpRouter);
 app.use('/product', productRouter);
+app.use('/catalog', catalogRouter);
+app.use('/customer', customerRouter);
+
 
 
 

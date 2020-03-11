@@ -1,10 +1,10 @@
+
 <% if (products.length > 0) {%>
     
-			<table border=1>
+			<table  border=1>
 				<tr>
                     <th>Product Name </th>
                     <th>Description </th>
-                    <th>Image </th>
                     <th>Status </th>
                     <th>Sale Price </th>
                     <th colspan=3> Actions</th>
@@ -18,9 +18,9 @@
                     <td><%= product.description %></td>
 					<td><%= product.status %></td>
 					<td><%= product.saleprice %></td>
-					<td><a href='/product/<%= product.product_id %>'> Show </a></td>
-                    <td><a href='/product/<%= product.product_id %>/edit'> Edit </a></td>
-                    <td><a href='/product/<%= product.product_id %>/delete' onclick="return confirm('Are you sure you want to delete this item?');"> Delete </a></td>
+					<td><a href='/product/<%= product.product_id %>' class="myButton">> Show </a></td>
+                    <td><a href='/product/<%= product.product_id %>/edit' class="myButton">> Edit </a></td>
+                    <td><a href='/product/<%= product.product_id %>/delete' onclick="return confirm('Are you sure you want to delete this item?');" class="myButton">> Delete </a></td>
 
                 </tr>
 	
@@ -30,7 +30,6 @@
             <p>Products Not Available</p>
         <% } %>
 
-<a href="/product/addprod"> Add New Product</a>
-
+<a href="/product/addprod" class="myButton">> Add New Product</a>
 
 

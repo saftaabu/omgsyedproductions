@@ -1,9 +1,10 @@
-<h1> Edit Product Information </h1>
 
-<form action="/product/save" method="post" >
+
+<form action="/product/save" class="form-style-4"method="post" >
+    <h1 class ="AddProduct"> Edit Product Information </h1>
 	<p><input type="hidden" name="product_id" value=<%= product.product_id %> required> </p>
 	<p>Product Name: <input type="text" name="productname" value= "<%= product.productname %>" required> </p>
-  	<p>Product Image: <input type="text" name="productimage" value=<%= product.productimage %> required> </p>
+  	<p>Description: <input type="text" name="productimage" value="<%= product.productimage %>" required> </p>
 	<p>Description: <textarea name="description" rows="10" cols="30"><%= product.description %></textarea> </p>
 	<p>Category ID: <input type="number" name="category_id" value=<%= product.category_id %> required> </p>
 	<p>Supplier ID: <input type="number" name="supplier_id" value=<%= product.supplier_id %> required> </p>
@@ -23,5 +24,5 @@
 	<p>Reorder Point: <input type="number" name="reorderpoint" value=<%= product.reorderpoint %> required> </p>
 	<p>Reorder Qty: <input type="number" name="reorderqty" value=<%= product.reorderqty %> required> </p>
 
-	<button type="submit">Update Product</button>
+	<button type="submit" class="myButton"> Update Product</button>
 </form>
