@@ -6,7 +6,6 @@ var logger = require('morgan');
 
 const mariadb = require('mariadb/callback');
 const cart = [];
-global.cart = cart;
 const session = require('express-session');
 
 const db = mariadb.createConnection ({host: 'eagle.cdm.depaul.edu', user: 'saftaabu', password: 'saftaabu', database: 'omgsyedb'});

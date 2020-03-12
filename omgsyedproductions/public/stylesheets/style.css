@@ -18,7 +18,7 @@ display:inline;
 
     font-family: Dafont;
    src: url(elkwood.woff);
-   font-weight: bold;;
+   font-weight: bold;
 }
 
 li a {
@@ -54,8 +54,8 @@ product {
     float: left;
 	background: #ffffe6;
 	box-shadow: 5px 5px 2px #888888;
-	min-width: 200px;
-	max-width: 200px;
+	min-width: 400px;
+	max-width: 400px;
 	min-height: 250px;
 	max-height: 250px;
     border-radius: 5px;
@@ -210,4 +210,10 @@ a.button3:hover{
 .AddProduct {
     color: black;
 }
+
+.cart {
+     text-align: right;
+    display: block;
+}
+
 
