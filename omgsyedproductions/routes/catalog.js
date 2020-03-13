@@ -55,24 +55,21 @@ router.post('/add', function(req, res, next) {
 // Route to show shopping cart
 // ==================================================
 router.get('/cart', function(req, res, next) {
-	if (req.session.cart) {
+	if (!Array.isArray(req.session.cart) || ! req.session.cart.length) {
+        res.render('catalog/cart', {cartitems: 0}) ;
+    } else {
 		let query = "SELECT product_id, productname, productimage, status, saleprice from product WHERE product_id in (" + req.session.cart + ")"; 
 		// execute query
 		db.query(query, (err, result) => {
-			if (err) {
-				res.render('error');
-			} else {
-				if (result.length > 0 ) {
-						res.render('catalog/cart', {cartitems: result, qtys: req.session.qty  });
-				} else  {
-					res.render('catalog/cart', {cartitems: '0' });
-				}
-			}
+			if (err) {res.render('error'); } else 
+                    {res.render('catalog/cart', {cartitems: result, qtys: req.session.qty  
+                            });}
+            
 		});
-	} else {
-		res.render('catalog/cart', {cartitems: '0' });
-	}
+        
+    }
 });
+        
 
 
 
