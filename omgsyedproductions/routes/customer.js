@@ -49,24 +49,26 @@ router.post('/login', function(req, res, next) {
 				// Check if password is correct
 				bcrypt.compare(req.body.password, result[0].password, function(err, result1) {
 					if(result1) {
+						// passwords match
+						
 						var custid = result[0].customer_id;
 						req.session.customer_id = custid;
 
 						var custname = result[0].firstname + " "+ result[0].firstname;
 						req.session.custname = custname;
 						
-						// passwords match
 						res.redirect('/');
 					} else {
 						// password do not match
-						res.render('login', {message: "Wrong Password"});
+						res.render('customer/login', {message: "Wrong Password"});
 					}
 					});
 				}
-			else {res.render('login', {message: "Wrong Username"});}
+			else {res.render('customer/login', {message: "Wrong Username"});}
 		} 
  	});
 });
+
 
 
 
